@@ -20,7 +20,7 @@ namespace TrackJobApp.Controllers
             _jobApplicationService = jobApplicationService;
         }
 
-        [HttpGet(Name = "GetJobApplications")]
+        [HttpGet("getAllJobApplications")]
         public IEnumerable<JobApplicationDto> Get()
         {
             try
@@ -45,7 +45,7 @@ namespace TrackJobApp.Controllers
             return Enumerable.Empty<JobApplicationDto>();   
         }
 
-        [HttpGet(Name = "GetJobApplicationById")]
+        [HttpGet("getJobApplicationById/{id}")]
         public JobApplicationDto GetJobApplicationById(int id)
         {
             var application = _jobApplicationService.GetApplicationById(id);
