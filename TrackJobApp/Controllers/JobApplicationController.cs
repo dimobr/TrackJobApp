@@ -66,5 +66,11 @@ namespace TrackJobApp.Controllers
                 Description = application.Description?.DescriptionText
             };
         }
+
+        [HttpPost("createNewJobApplicationItem")]
+        public IActionResult CreateNewJobApplicationItem(JobApplicationDto applicationItem)
+        {
+            return Ok();
+        }
     }
 }
