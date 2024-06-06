@@ -5,6 +5,18 @@ namespace TrackJobApp.Services.Samples
 {
     public class JobApplicationService : IJobApplicationService
     {
+        public static string[] JobApplicationCsv { get; set; } = [
+            "Software Engineer;Awesome Company LLC;Remote;07.05.2024;Helloworld.rs;Pending;CV sent without a cover letter;",
+            "Application Security Engineer;Software Facade Inc.;\"San Francisco, USA\";07.05.2024;Helloworld.rs;Pending;Applied through a third-party site;",
+            ".NET Developer;WeWriteWords LLC;Remote;07.05.2024;;Pending;LinkedIn Easy Apply;",
+            "Software Engineer;Las Vegas Software Inc;\"Las Vegas, USA (Hybrid)\";08.05.2024;LinkedIn.com;Pending;E-mail not confirmed;",
+            "Back End Developer;ESD ltd;\"London, UK (On-Site)\";08.05.2024;LinkedIn.com;Pending;;",
+            "Full Stack Software Engineer;Softclose doo;\"Belgrade, SRB (Hybrid)\";09.05.2024;;Rejected;Not enough relevant experience;",
+            "Full Stack Developer;HiTecc1;Remote;10.05.2024;LinkedIn.com;Pending;;",
+            "DevOps Engineer;Upp & Daun AG;\"Berlin, DE (On-Site)\";12.05.2024;LinkedIn.com;Pending;;",
+            "Software Developer;Superb Development Industries;;12.05.2024;LinkedIn.com;Interview;Applied through their website;",
+            "Front End Developer;NorDev AS;\"Oslo, Norway \";15.05.2024;LinkedIn.com;Pending;Application sent with LinkedIn Easy Apply;"];
+
         public IEnumerable<JobApplication> GetApplications()
         {
             var exampleJobApplications = _createJobApplications();
@@ -35,7 +47,7 @@ namespace TrackJobApp.Services.Samples
         {
             var currentIndex = 0;
             var jobs = new List<JobApplication>();
-            _getCsvJobApplicationArray().ToList().ForEach(arrayElement =>
+            JobApplicationCsv.ToList().ForEach(arrayElement =>
             {
                 var spreadsheetColumns = arrayElement.Split(';');
                 jobs.Add(new JobApplication()
@@ -54,20 +66,6 @@ namespace TrackJobApp.Services.Samples
             });
 
             return jobs;
-        }
-
-        private static string[] _getCsvJobApplicationArray()
-        {
-            return ["Software Engineer;Awesome Company LLC;Remote;07.05.2024;Helloworld.rs;Pending;CV sent without a cover letter;",
-                    "Application Security Engineer;Software Facade Inc.;\"San Francisco, USA\";07.05.2024;Helloworld.rs;Pending;Applied through a third-party site;",
-                    ".NET Developer;WeWriteWords LLC;Remote;07.05.2024;;Pending;LinkedIn Easy Apply;",
-                    "Software Engineer;Las Vegas Software Inc;\"Las Vegas, USA (Hybrid)\";08.05.2024;LinkedIn.com;Pending;E-mail not confirmed;",
-                    "Back End Developer;ESD ltd;\"London, UK (On-Site)\";08.05.2024;LinkedIn.com;Pending;;",
-                    "Full Stack Software Engineer;Softclose doo;\"Belgrade, SRB (Hybrid)\";09.05.2024;;Rejected;Not enough relevant experience;",
-                    "Full Stack Developer;HiTecc1;Remote;10.05.2024;LinkedIn.com;Pending;;",
-                    "DevOps Engineer;Upp & Daun AG;\"Berlin, DE (On-Site)\";12.05.2024;LinkedIn.com;Pending;;",
-                    "Software Developer;Superb Development Industries;;12.05.2024;LinkedIn.com;Interview;Applied through their website;",
-                    "Front End Developer;NorDev AS;\"Oslo, Norway \";15.05.2024;LinkedIn.com;Pending;Application sent with LinkedIn Easy Apply;"];
         }
 
         enum ColumnIndex
